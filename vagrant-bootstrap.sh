@@ -1,5 +1,3 @@
 #!/bin/bash
 
-apt-get install -y build-essential cmake nodejs npm python
-
-npm install nodegit
+apt-get install -y build-essential cmake python nodejs npm git
