@@ -8,6 +8,12 @@ var repo = git(config.repositoryDirectory);
 var restify = require('restify');
 var server = restify.createServer();
 
+// DirectoryController
+var DirectoryController = require('./controllers/file');
+var directoryController = new DirectoryController(config);
+server.get('/directory/:name', directoryController.get);
+
+// FileController
 var FileController = require('./controllers/file');
 var fileController = new FileController(config);
 server.get('/file/:name', fileController.get);
