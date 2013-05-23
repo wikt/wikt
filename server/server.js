@@ -1,10 +1,8 @@
-// Configuration
-var repositoryDirectory = '../test/wiki-test';
-
+var config = require('./config');
 var git = require('gift');
 var fs = require('fs');
 
-var repo = git(repositoryDirectory);
+var repo = git(config.repositoryDirectory);
 
 // REST server
 var restify = require('restify');
@@ -22,7 +20,7 @@ var FileController = function() {
     this.get = function(req, res, next) {
         console.log('Sending file ' + req.params.name);
 
-        fs.readFile(repositoryDirectory + '/' + req.params.name, 'utf8', function(err, data) {
+        fs.readFile(config.repositoryDirectory + '/' + req.params.name, 'utf8', function(err, data) {
             if (err) throw err;
 
             res.send('hello ' + data);
@@ -34,7 +32,7 @@ var FileController = function() {
     this.post = function(req, res, next) {
         console.log('Modifying file ' + req.params.name);
 
-        fs.writeFile(repositoryDirectory + '/' + req.params.name, req.params.content, function(err) {
+        fs.writeFile(config.repositoryDirectory + '/' + req.params.name, req.params.content, function(err) {
             if (err) throw err;
         });
     };
