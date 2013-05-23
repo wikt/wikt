@@ -15,7 +15,7 @@ module.exports = function(config) {
         fs.readFile(config.repositoryDirectory + '/' + req.params.name, 'utf8', function(err, data) {
             if (err) throw err;
 
-            res.send('hello ' + data);
+            res.send(data);
         });
     };
 
