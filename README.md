@@ -2,11 +2,13 @@
 
 The wicked git wiki
 
+Work in progress, please come back later.
+
 ## Installation
 
 Requires:
 
-- Node.js > 0.8
+- Node.js > 0.6
 - cmake
 - Python
 
