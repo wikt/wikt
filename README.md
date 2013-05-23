@@ -2,6 +2,8 @@
 
 The wicked git wiki
 
+Work in progress, please come back later.
+
 ## Installation
 
 Requires:
