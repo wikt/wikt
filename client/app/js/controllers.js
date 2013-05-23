@@ -2,10 +2,16 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
-
-  }])
-  .controller('MyCtrl2', [function() {
-
-  }]);
+angular.module('wikt.controllers', ['ng']).
+    controller('DocumentController', [function ($scope, $ng) {
+        $scope.getSample = function() {
+            $ng.http({method: 'GET', url: '/'})
+                .success(function (data, status, headers, config) {
+                    $scope.documentContent = data;
+                    $scope.view = './views/document/sample'
+                })
+                .error(function (data, status, headers, config) {
+                    console.log("crap, that failed");
+                });
+        }
+}]);
