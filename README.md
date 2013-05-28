@@ -23,7 +23,7 @@ Clone a wiki repository inside `test/`, for example:
 
 ```bash
 cd test
-git clone git@github.com:wikt/wiki-test.git
+git clone git://github.com/wikt/wiki-test.git
 ```
 
 ## JS Git libraries comparison
