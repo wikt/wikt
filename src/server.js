@@ -18,8 +18,8 @@ app.get('/directory/:name?', directoryController.get);
 // FileController
 var FileController = require('./controllers/file');
 var fileController = new FileController(config);
-app.get('/file/:name', fileController.get);
-app.post('/file/:name', fileController.post);
+app.get('/file/:name?', fileController.get);
+app.post('/file/:name?', fileController.post);
 
 
 // Serve static files of the JS app

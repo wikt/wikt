@@ -4,6 +4,8 @@ The wicked git wiki
 
 Work in progress, please come back later.
 
+![screenshot](doc/screenshot.png)
+
 ## Installation
 
 Requires:

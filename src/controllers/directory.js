@@ -12,10 +12,6 @@ module.exports = function(config) {
     this.get = function(req, res, next) {
         var dirName = req.params.name;
 
-        if (!dirName) {
-            dirName = '';
-        }
-
         if (!dirName || dirName == 'undefined') {
             dirName = '';
         }

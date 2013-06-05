@@ -1,17 +1,21 @@
 'use strict';
 
-/* Document Controller */
+/* Controllers */
 
-angular.module('wikt.controllers', []).controller('DocumentController');
+angular.module('wikt.controllers', []).
+controller('DocumentController', function ($scope, $routeParams, $http) {
 
-function DocumentController ($scope, $http) {
-    $scope.getSample = function() {
-        $http.get('file/README.md').success(function(markdown) {
+    var path = $routeParams.path;
+
+    $scope.fileName = path ? path : 'Home';
+
+    $scope.getMarkdown = function() {
+        $http.get('file/' + path).success(function(markdown) {
             $scope.markdown = markdown;
             var converter = new Showdown.converter();
             $scope.html = converter.makeHtml(markdown);
         });
     };
 
-    $scope.getSample();
-}
+    $scope.getMarkdown();
+});

@@ -1,5 +1,10 @@
 <div ng-controller='DocumentController' class="span12">
-    <div class="editable" ng-bind-html-unsafe="html"></div>
-    <hr>
-    <pre id="source">{{ markdown }}</pre>
+
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a> <span class="divider">/</span></li>
+        <li class="active">{{ fileName }}</li>
+    </ul>
+
+    <div ng-bind-html-unsafe="html"></div>
+
 </div>
