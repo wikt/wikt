@@ -2,5 +2,5 @@
  * Config
  */
 module.exports = {
-    repositoryDirectory: '../test/wiki-test'
+    repositoryDirectory: __dirname + '/../test/wiki-test'
 };
