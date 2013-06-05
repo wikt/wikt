@@ -20,10 +20,12 @@ module.exports = function(config) {
             dirName = '';
         }
 
+        dirName = config.repositoryDirectory + '/' + dirName;
+
         console.log("Listing directory '" + dirName + "'");
 
         // Read directory content
-        fs.readdir(config.repositoryDirectory + '/' + dirName, function(err, files) {
+        fs.readdir(dirName, function(err, files) {
             if (err) {
                 console.error(err);
                 return;
@@ -40,8 +42,12 @@ module.exports = function(config) {
                     continue;
                 }
 
+                // Check file type
+                var stat = fs.statSync(dirName + '/' + file);
+
                 result[file] = {
-                    name: file
+                    name: file,
+                    directory: stat.isDirectory()
                 };
             }
 
