@@ -3,12 +3,9 @@
 /* Controllers */
 
 angular.module('wikt.controllers', []).
-    controller('DocumentController', function ($scope) {
+    controller('DocumentController', function ($scope, $http) {
         $scope.getSample = function() {
-            $.get('http://localhost:8080/file/README.md', function (data) {
-                $scope.documentContent = data;
-                $scope.view = "./views/document/sample"
-            })
+            $http.get('file/README.md').success(function(data) { $scope.data = data });
         }
 
         $scope.getSample();
