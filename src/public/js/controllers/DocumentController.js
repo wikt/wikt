@@ -1,6 +1,6 @@
 'use strict';
 
-/* Controllers */
+/* Document Controller */
 
 angular.module('wikt.controllers', []).
 controller('DocumentController', function ($scope, $http) {
