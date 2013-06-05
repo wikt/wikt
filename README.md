@@ -19,6 +19,8 @@ cd server/
 npm install
 ```
 
+If you are using Vagrant on Windows, you will need to run `npm install --no-bin-links` instead.
+
 Clone a wiki repository inside `test/`, for example:
 
 ```bash
