@@ -4,7 +4,7 @@
 // Declare app level module which depends on filters, and services
 angular
     .module('wikt', ['ui.state', 'wikt.filters', 'wikt.services', 'wikt.directives', 'wikt.controllers'])
-    .config(function ($stateProvider, $routeProvider) {
+    .config(function ($stateProvider, $routeProvider, $urlRouterProvider) {
 
         $stateProvider.state('sample', {
             url: '/:path',
@@ -17,5 +17,7 @@ angular
                 }
             }
         });
+
+        $urlRouterProvider.otherwise('/');
         
     });
