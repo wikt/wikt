@@ -1,3 +1,5 @@
 <div ng-controller='DocumentController' class="span12">
-    <pre>{{data}}</pre>
+    <div class="editable" ng-bind-html-unsafe="html"></div>
+    <hr>
+    <pre id="source">{{ markdown }}</pre>
 </div>
