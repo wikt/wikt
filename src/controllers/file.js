@@ -10,9 +10,15 @@ module.exports = function(config) {
      * GET: returns file content
      */
     this.get = function(req, res, next) {
-        console.log('Sending file ' + req.params.name);
+        var fileName = req.params.name;
 
-        fs.readFile(config.repositoryDirectory + '/' + req.params.name, 'utf8', function(err, data) {
+        if (!fileName || fileName == 'undefined') {
+            fileName = 'README.md';
+        }
+
+        console.log('Sending file ' + fileName);
+
+        fs.readFile(config.repositoryDirectory + '/' + fileName, 'utf8', function(err, data) {
             if (err) {
                 console.error(err);
                 return;
@@ -26,9 +32,15 @@ module.exports = function(config) {
      * POST: edit file content
      */
     this.post = function(req, res, next) {
-        console.log('Modifying file ' + req.params.name);
+        var fileName = req.params.name;
 
-        fs.writeFile(config.repositoryDirectory + '/' + req.params.name, req.params.content, function(err) {
+        if (!fileName || fileName == 'undefined') {
+            fileName = 'README.md';
+        }
+
+        console.log('Modifying file ' + fileName);
+
+        fs.writeFile(config.repositoryDirectory + '/' + fileName, req.params.content, function(err) {
             if (err) {
                 console.error(err);
                 return;
