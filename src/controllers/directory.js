@@ -10,12 +10,42 @@ module.exports = function(config) {
      * GET: returns directory content (file and folder names list)
      */
     this.get = function(req, res, next) {
-        console.log('Listing directory ' + req.params.name);
+        var dirName = req.params.name;
 
-        fs.readdir(config.repositoryDirectory + '/' + req.params.name, function(err, files) {
-            if (err) throw err;
+        if (!dirName) {
+            dirName = '';
+        }
 
-            res.send(files);
+        if (!dirName || dirName == 'undefined') {
+            dirName = '';
+        }
+
+        console.log("Listing directory '" + dirName + "'");
+
+        // Read directory content
+        fs.readdir(config.repositoryDirectory + '/' + dirName, function(err, files) {
+            if (err) {
+                console.error(err);
+                return;
+            }
+
+            var result = {};
+
+            // For each file
+            for (var i = 0; i < files.length; i++) {
+                file = files[i];
+
+                // Ignore hidden files
+                if (file.length > 0 && file[0] == '.') {
+                    continue;
+                }
+
+                result[file] = {
+                    name: file
+                };
+            }
+
+            res.send(result);
         });
     };
 

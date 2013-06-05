@@ -8,12 +8,12 @@ var repo = git(config.repositoryDirectory);
 var express = require('express');
 var app = express();
 
-app.use(express.logger());
+//app.use(express.logger());
 
 // DirectoryController
-var DirectoryController = require('./controllers/file');
+var DirectoryController = require('./controllers/directory');
 var directoryController = new DirectoryController(config);
-app.get('/directory/:name', directoryController.get);
+app.get('/directory/:name?', directoryController.get);
 
 // FileController
 var FileController = require('./controllers/file');

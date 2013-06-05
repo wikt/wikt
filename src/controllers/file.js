@@ -13,7 +13,10 @@ module.exports = function(config) {
         console.log('Sending file ' + req.params.name);
 
         fs.readFile(config.repositoryDirectory + '/' + req.params.name, 'utf8', function(err, data) {
-            if (err) throw err;
+            if (err) {
+                console.error(err);
+                return;
+            }
 
             res.send(data);
         });
@@ -26,7 +29,10 @@ module.exports = function(config) {
         console.log('Modifying file ' + req.params.name);
 
         fs.writeFile(config.repositoryDirectory + '/' + req.params.name, req.params.content, function(err) {
-            if (err) throw err;
+            if (err) {
+                console.error(err);
+                return;
+            }
         });
     };
 
