@@ -1,0 +1,23 @@
+<div ng-controller='RepositoryController'>
+    <ul class="nav nav-tabs nav-stacked">
+        <li >
+            <a href="#">
+                <i class="icon-chevron-up"></i>
+
+            </a>
+        </li>
+        <li ng-repeat='item in items' ng-class="{active: $index==}">
+            <a href="#/{{item.name}}">
+                {{item.name}}
+                <i class="icon-chIevron-right pull-right"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="icon-folder-open"></i>
+                Other
+                <i class="icon-chevron-right pull-right"></i>
+            </a>
+        </li>
+    </ul>
+</div>

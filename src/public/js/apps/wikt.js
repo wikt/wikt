@@ -8,9 +8,12 @@ angular
 
         $stateProvider.state('sample', {
             url: '/:path',
-            'views': {
-                'sample' : {
+            views: {
+                "sample" : {
                     templateUrl: 'views/document/sample.html'
+                },
+                "tree" : {
+                    templateUrl: 'views/repository/tree.html'
                 }
             }
         });
