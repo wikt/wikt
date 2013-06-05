@@ -49,9 +49,5 @@ jQuery(document).ready(function() {
         updateHtml(this.value);
     });
 
-//    console.log(jQuery('#source').text());
-//
-//    jQuery('.editable').html(htmlize(jQuery('#source').text()));
-//
 //    showSource(jQuery('.editable').html());
 });
