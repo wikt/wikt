@@ -22,9 +22,44 @@
         </div>
 
         <!-- Main container -->
-        <div class="container-fluid">
+        <div class="container">
             <div class="row-fluid">
-                <div ng-view></div>
+
+                <!-- Left menu -->
+                <div class="span3">
+                    <ul class="nav nav-tabs nav-stacked">
+                        <li>
+                            <a href="#">
+                                <i class="icon-chevron-up"></i>
+                                Up
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                Home
+                                <i class="icon-chIevron-right pull-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Other
+                                <i class="icon-chevron-right pull-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="icon-folder-open"></i>
+                                Other
+                                <i class="icon-chevron-right pull-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="span9">
+                    <div ng-view></div>
+                </div>
+
             </div>
         </div>
 
