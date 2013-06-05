@@ -17,7 +17,7 @@ Requires:
 Install Node libraries:
 
 ```bash
-cd server/
+cd src/
 npm install
 ```
 

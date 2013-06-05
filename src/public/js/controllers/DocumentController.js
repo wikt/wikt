@@ -4,14 +4,21 @@
 
 angular.module('wikt.controllers', []).controller('DocumentController');
 
-function DocumentController($scope, $routeParams, $http) {
+function DocumentController($scope, $stateParams, $http) {
 
-    var path = $routeParams.path;
+    var path = $stateParams.path ? $stateParams.path : '';
+    var fileName;
 
-    $scope.fileName = path ? path : 'Home';
+    var parts = path.split('\\');
+
+    if (parts.length > 0) {
+        fileName = parts[parts.length - 1];
+    }
+
+    $scope.fileName = fileName;
 
     $scope.getMarkdown = function() {
-        $http.get('file/' + path).success(function(markdown) {
+        $http.get('file/' + encodeURIComponent(path)).success(function(markdown) {
             $scope.markdown = markdown;
             var converter = new Showdown.converter();
             $scope.html = converter.makeHtml(markdown);
@@ -19,4 +26,4 @@ function DocumentController($scope, $routeParams, $http) {
     };
 
     $scope.getMarkdown();
-};
+}

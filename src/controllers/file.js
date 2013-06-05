@@ -16,6 +16,12 @@ module.exports = function(config) {
             fileName = 'README.md';
         }
 
+        // If it's a directory
+        var stat = fs.statSync(config.repositoryDirectory + '/' + fileName);
+        if (stat.isDirectory()) {
+            fileName += '/README.md';
+        }
+
         console.log('Sending file ' + fileName);
 
         fs.readFile(config.repositoryDirectory + '/' + fileName, 'utf8', function(err, data) {
