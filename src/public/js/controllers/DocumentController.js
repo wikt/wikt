@@ -2,8 +2,9 @@
 
 /* Controllers */
 
-angular.module('wikt.controllers', []).
-controller('DocumentController', function ($scope, $routeParams, $http) {
+angular.module('wikt.controllers', []).controller('DocumentController');
+
+function DocumentController($scope, $routeParams, $http) {
 
     var path = $routeParams.path;
 
@@ -18,4 +19,4 @@ controller('DocumentController', function ($scope, $routeParams, $http) {
     };
 
     $scope.getMarkdown();
-});
+};
