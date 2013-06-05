@@ -2,8 +2,9 @@
 
 /* Document Controller */
 
-angular.module('wikt.controllers', []).
-controller('DocumentController', function ($scope, $http) {
+angular.module('wikt.controllers', []).controller('DocumentController');
+
+function DocumentController ($scope, $http) {
     $scope.getSample = function() {
         $http.get('file/README.md').success(function(markdown) {
             $scope.markdown = markdown;
@@ -13,4 +14,4 @@ controller('DocumentController', function ($scope, $http) {
     };
 
     $scope.getSample();
-});
+}
