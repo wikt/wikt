@@ -10,7 +10,7 @@ Work in progress, please come back later.
 
 Requires:
 
-- Node.js > 0.6
+- Node.js > 0.8
 - cmake
 - Python
 
