@@ -7,9 +7,7 @@
  * @param $http
  * @param $stateParams
  */
-function CategoryController($scope, $http, $stateParams) {
-
-function RepositoryController ($scope, $http, $stateParams, repositoryService) {
+function CategoryController($scope, $http, $stateParams, categoryService) {
 
     var basePath = $stateParams.path ? $stateParams.path : '';
 
@@ -17,9 +15,10 @@ function RepositoryController ($scope, $http, $stateParams, repositoryService) {
 
         $scope.directories = [];
         $scope.files = [];
-        $scope.parentDirectoryPath = repositoryService.getParentDirectory(path);
-        console.log($scope.parentDirectoryPath);
-        $http.get('directory/' + $scope.parentDirectoryPath).success(function(items) {
+        $scope.parentDirectoryPath = categoryService.getParentDirectory(path);
+        $scope.currentDirectoryPath = categoryService.getCurrentDirectory(path);
+
+        $http.get('directory/' + $scope.currentDirectoryPath).success(function(items) {
             items.forEach(function(item) {
                 item.directory == true ? $scope.directories.push(item) : $scope.files.push(item);
             });
