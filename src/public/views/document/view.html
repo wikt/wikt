@@ -6,9 +6,17 @@
     </ul>
 
     <div class="btn-group pull-right">
-        <button class="edit-document btn">
+        <button class="btn" ng-hide="documentOpened" ng-click="editDocument()">
             <i class="icon-edit"></i>
             Edit
+        </button>
+        <button class="btn" ng-show="documentOpened" ng-click="saveDocument()">
+            <i class="icon-file"></i>
+            Save
+        </button>
+        <button class="btn" ng-show="documentOpened" ng-click="closeDocument()">
+            <i class="icon-folder-close"></i>
+            Close
         </button>
     </div>
 

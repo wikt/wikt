@@ -38,6 +38,18 @@ function DocumentController($scope, $stateParams, $http, editorService) {
 
     $scope.getMarkdown();
 
-    // Open Hallo editor
-    editorService.startEditor();
+    $scope.documentOpened = false;
+
+    $scope.editDocument = function() {
+        $scope.documentOpened = true;
+        editorService.open();
+    };
+    $scope.saveDocument = function() {
+        $scope.documentOpened = false;
+        editorService.save();
+    };
+    $scope.closeDocument = function() {
+        $scope.documentOpened = false;
+        editorService.close();
+    };
 }

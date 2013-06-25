@@ -46,7 +46,7 @@ function EditorService() {
     /**
      * Start up the editor
      */
-    this.startEditor = function() {
+    this.open = function() {
         self.divDocument = jQuery('.document');
         self.divSource = jQuery('.document-source');
 
@@ -57,6 +57,7 @@ function EditorService() {
                 'hallolists': {},
                 'halloreundo': {}
             },
+            editable: true,
             toolbar: 'halloToolbarFixed'
         });
 
@@ -78,7 +79,23 @@ function EditorService() {
             self.divSource.hide(100);
             self.showSource(self.divDocument.html());
         });
-    }
+    };
+
+    /**
+     * Save the document and close the editor
+     */
+    this.save = function() {
+        self.close();
+    };
+
+    /**
+     * Close the editor (and discard modifications)
+     */
+    this.close = function() {
+        self.divDocument.hallo({editable: false});
+        self.divDocument = null;
+        self.divSource = null;
+    };
 }
 
 var module = angular.module('wikt.services', []);
