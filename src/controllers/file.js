@@ -16,10 +16,11 @@ module.exports = function(config) {
             fileName = 'README.md';
         }
 
-        // If it's a directory
+        // If it's a directory returns NULL
         var stat = fs.statSync(config.repositoryDirectory + '/' + fileName);
         if (stat.isDirectory()) {
-            fileName += '/README.md';
+            res.send(null);
+            return;
         }
 
         console.log('Sending file ' + fileName);
