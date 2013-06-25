@@ -9,13 +9,17 @@
  */
 function CategoryController($scope, $http, $stateParams) {
 
-    var path = $stateParams.path ? $stateParams.path : '';
+function RepositoryController ($scope, $http, $stateParams, repositoryService) {
+
+    var basePath = $stateParams.path ? $stateParams.path : '';
 
     $scope.getPathContent = function(path) {
+
         $scope.directories = [];
         $scope.files = [];
-
-        $http.get('directory' + path).success(function(items) {
+        $scope.parentDirectoryPath = repositoryService.getParentDirectory(path);
+        console.log($scope.parentDirectoryPath);
+        $http.get('directory/' + $scope.parentDirectoryPath).success(function(items) {
             items.forEach(function(item) {
                 item.directory == true ? $scope.directories.push(item) : $scope.files.push(item);
             });
@@ -23,5 +27,5 @@ function CategoryController($scope, $http, $stateParams) {
 
     };
 
-    $scope.getPathContent('/');
-}
+    $scope.getPathContent(basePath);
+};

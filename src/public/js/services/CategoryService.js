@@ -6,15 +6,16 @@
 function CategoryService() {
 
     CategoryService.prototype.getCurrentItemName = function(path) {
-        var parts = path.split('\\');
-        if (parts.length > 0) {
-            return parts[parts.length - 1];
-        }
+        return path.split('\\').pop();
     }
 
     CategoryService.prototype.getParentDirectory = function(path) {
-        var parentPath = path.split('\\').pop().join('\\');
-        return parentPath;
+        if (path == '\\') {
+            return path;
+        } else {
+            var slashIndex = path.lastIndexOf('\\');
+            return path.substring(0,slashIndex);
+        }
     }
 
 }

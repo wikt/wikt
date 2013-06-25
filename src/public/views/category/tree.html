@@ -3,11 +3,10 @@
         <li >
             <a href="">
                 <i class="icon-chevron-up"></i>
-
             </a>
         </li>
         <li ng-repeat='directory in directories'>
-            <a href ng-click="navigate(directory.name)">
+            <a href="#{{parentDirectoryPath}}/{{directory.name}}/">
                 <i class="icon-folder-open"></i>
                 {{directory.name}}
                 <i class="icon-chevron-right pull-right"></i>
