@@ -10,7 +10,7 @@ angular
             url: '/:path',
             views: {
                 "sample" : {
-                    templateUrl: 'views/document/sample.html'
+                    templateUrl: 'views/document/view.html'
                 },
                 "tree" : {
                     templateUrl: 'views/repository/tree.html'
