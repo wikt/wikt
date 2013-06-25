@@ -75,14 +75,12 @@ function EditorService() {
         });
 
         self.showSource(self.divArticle.html());
-        self.divArticleSource.show(100);
     };
 
     /**
      * Close the editor (and discard modifications)
      */
     this.close = function() {
-        self.divArticleSource.hide(100);
         self.divArticle.hallo({editable: false});
         self.divArticle = null;
         self.divArticleSource = null;
