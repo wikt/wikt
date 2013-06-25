@@ -1,22 +1,21 @@
 'use strict';
 
-/* Document Controller */
-
 /**
+ * Article controller
+ *
  * @param $scope
  * @param $stateParams
  * @param editorService {EditorService}
- * @param documentService {DocumentService}
- * @param repositoryService {RepositoryService}
- * @constructor
+ * @param articleService {ArticleService}
+ * @param categoryService {CategoryService}
  */
-function DocumentController($scope, $stateParams, editorService, documentService, repositoryService) {
+function ArticleController($scope, $stateParams, editorService, articleService, categoryService) {
 
     var path = $stateParams.path ? $stateParams.path : '';
-    $scope.fileName = repositoryService.getCurrentItemName(path);
+    $scope.fileName = categoryService.getCurrentItemName(path);
 
-    $scope.loadDocument = function() {
-        documentService.getDocumentContent(path).success(function(markdown) {
+    $scope.loadArticle = function() {
+        articleService.getArticleContent(path).success(function(markdown) {
             var converter = new Showdown.converter();
             var html = converter.makeHtml(markdown);
 
@@ -28,28 +27,28 @@ function DocumentController($scope, $stateParams, editorService, documentService
         });
     };
 
-    $scope.loadDocument();
+    $scope.loadArticle();
 
-    $scope.documentOpened = false;
+    $scope.articleEdition = false;
 
-    $scope.editDocument = function() {
-        $scope.documentOpened = true;
+    $scope.editArticle = function() {
+        $scope.articleEdition = true;
         editorService.open();
     };
 
-    $scope.saveDocument = function() {
+    $scope.saveArticle = function() {
         var markdown = editorService.getSource();
-        documentService.setDocumentContent(path, markdown)
+        articleService.setArticleContent(path, markdown)
             .success(function() {
-                $scope.closeDocument();
+                $scope.closeArticle();
             })
             .error(function() {
                 alert("Error while saving.");
             });
     };
 
-    $scope.closeDocument = function() {
-        $scope.documentOpened = false;
+    $scope.closeArticle = function() {
+        $scope.articleEdition = false;
         editorService.close();
     };
 }

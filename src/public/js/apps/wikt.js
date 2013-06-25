@@ -10,10 +10,10 @@ angular
             url: '/:path',
             views: {
                 "sample" : {
-                    templateUrl: 'views/document/view.html'
+                    templateUrl: 'views/article/view.html'
                 },
                 "tree" : {
-                    templateUrl: 'views/repository/tree.html'
+                    templateUrl: 'views/category/tree.html'
                 }
             }
         });

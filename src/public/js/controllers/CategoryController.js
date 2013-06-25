@@ -1,8 +1,13 @@
 'use strict';
 
-/* Repository Controller */
-
-function RepositoryController ($scope, $http, $stateParams, repositoryService) {
+/**
+ * Category controller
+ *
+ * @param $scope
+ * @param $http
+ * @param $stateParams
+ */
+function CategoryController($scope, $http, $stateParams) {
 
     var path = $stateParams.path ? $stateParams.path : '';
 
@@ -16,7 +21,7 @@ function RepositoryController ($scope, $http, $stateParams, repositoryService) {
             });
         });
 
-    }
+    };
 
     $scope.getPathContent('/');
-};
+}

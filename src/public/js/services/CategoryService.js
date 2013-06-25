@@ -1,17 +1,18 @@
 'use strict';
 
-/* Repository Service */
+/**
+ * Category service
+ */
+function CategoryService() {
 
-function RepositoryService() {
-
-    RepositoryService.prototype.getCurrentItemName = function(path) {
+    CategoryService.prototype.getCurrentItemName = function(path) {
         var parts = path.split('\\');
         if (parts.length > 0) {
             return parts[parts.length - 1];
         }
     }
 
-    RepositoryService.prototype.getParentDirectory = function(path) {
+    CategoryService.prototype.getParentDirectory = function(path) {
         var parentPath = path.split('\\').pop().join('\\');
         return parentPath;
     }

@@ -1,0 +1,27 @@
+<div ng-controller='articleController' class="span12">
+
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a> <span class="divider">/</span></li>
+        <li class="active">{{ fileName }}</li>
+    </ul>
+
+    <div class="btn-group pull-right">
+        <button class="btn" ng-hide="articleEdition" ng-click="editArticle()">
+            <i class="icon-edit"></i>
+            Edit
+        </button>
+        <button class="btn" ng-show="articleEdition" ng-click="saveArticle()">
+            <i class="icon-file"></i>
+            Save
+        </button>
+        <button class="btn" ng-show="articleEdition" ng-click="closeArticle()">
+            <i class="icon-folder-close"></i>
+            Close
+        </button>
+    </div>
+
+    <div class="article" ng-bind-html-unsafe="html"></div>
+
+    <textarea class="article-source input-block-level" rows="10" style="display: none">Source</textarea>
+
+</div>

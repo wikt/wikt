@@ -31,29 +31,29 @@ function EditorService() {
 
     this.showSource = function(content) {
         var markdown = self.markdownize(content);
-        if (self.divSource.get(0).value == markdown) {
+        if (self.divArticleSource.get(0).value == markdown) {
             return;
         }
-        self.divSource.get(0).value = markdown;
+        self.divArticleSource.get(0).value = markdown;
     };
 
 
     this.updateHtml = function(content) {
-        if (self.markdownize(self.divDocument.html()) == content) {
+        if (self.markdownize(self.divArticle.html()) == content) {
             return;
         }
         var html = self.htmlize(content);
-        self.divDocument.html(html);
+        self.divArticle.html(html);
     };
 
     /**
      * Start up the editor
      */
     this.open = function() {
-        self.divDocument = jQuery('.document');
-        self.divSource = jQuery('.document-source');
+        self.divArticle = jQuery('.article');
+        self.divArticleSource = jQuery('.article-source');
 
-        self.divDocument.hallo({
+        self.divArticle.hallo({
             plugins: {
                 'halloformat': {},
                 'halloheadings': {},
@@ -65,35 +65,35 @@ function EditorService() {
         });
 
         // Update Markdown every time content is modified
-        self.divDocument.bind('hallomodified', function(event, data) {
+        self.divArticle.bind('hallomodified', function(event, data) {
             self.showSource(data.content);
         });
 
         // Source edition
-        self.divSource.on('keyup', function() {
+        self.divArticleSource.on('keyup', function() {
             self.updateHtml(this.value);
         });
 
-        self.showSource(self.divDocument.html());
-        self.divSource.show(100);
+        self.showSource(self.divArticle.html());
+        self.divArticleSource.show(100);
     };
 
     /**
      * Close the editor (and discard modifications)
      */
     this.close = function() {
-        self.divSource.hide(100);
-        self.divDocument.hallo({editable: false});
-        self.divDocument = null;
-        self.divSource = null;
+        self.divArticleSource.hide(100);
+        self.divArticle.hallo({editable: false});
+        self.divArticle = null;
+        self.divArticleSource = null;
     };
 
     /**
-     * Returns the markdown source of the document
+     * Returns the markdown source of the article
      * @returns {string}
      */
     this.getSource = function() {
-        return self.markdownize(self.divDocument.html());
+        return self.markdownize(self.divArticle.html());
     };
 }
 
