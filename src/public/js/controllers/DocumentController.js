@@ -37,8 +37,14 @@ function DocumentController($scope, $stateParams, editorService, documentService
         editorService.open();
     };
     $scope.saveDocument = function() {
-        $scope.documentOpened = false;
-        editorService.save();
+        var markdown = editorService.getSource();
+        documentService.setDocumentContent(path, markdown)
+            .success(function() {
+                $scope.closeDocument();
+            })
+            .error(function() {
+                alert("Error while saving.");
+            });
     };
     $scope.closeDocument = function() {
         $scope.documentOpened = false;

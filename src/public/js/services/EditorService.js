@@ -74,30 +74,26 @@ function EditorService() {
             self.updateHtml(this.value);
         });
 
-        self.divDocument.on('halloactivated', function() {
-            self.divSource.show(100);
-            self.showSource(self.divDocument.html());
-        });
-        self.divDocument.on('hallodeactivated', function() {
-            self.divSource.hide(100);
-            self.showSource(self.divDocument.html());
-        });
-    };
-
-    /**
-     * Save the document and close the editor
-     */
-    this.save = function() {
-        self.close();
+        self.showSource(self.divDocument.html());
+        self.divSource.show(100);
     };
 
     /**
      * Close the editor (and discard modifications)
      */
     this.close = function() {
+        self.divSource.hide(100);
         self.divDocument.hallo({editable: false});
         self.divDocument = null;
         self.divSource = null;
+    };
+
+    /**
+     * Returns the markdown source of the document
+     * @returns {string}
+     */
+    this.getSource = function() {
+        return self.markdownize(self.divDocument.html());
     };
 }
 

@@ -47,11 +47,13 @@ module.exports = function(config) {
 
         console.log('Modifying file ' + fileName);
 
-        fs.writeFile(config.repositoryDirectory + '/' + fileName, req.params.content, function(err) {
+        fs.writeFile(config.repositoryDirectory + '/' + fileName, req.body.content, function(err) {
             if (err) {
                 console.error(err);
                 return;
             }
+
+            res.send();
         });
     };
 
