@@ -6,8 +6,9 @@
  * @param $scope
  * @param $http
  * @param $stateParams
+ * @param categoryService {CategoryService}
  */
-function CategoryController($scope, $http, $stateParams) {
+function CategoryController($scope, $http, $stateParams, categoryService) {
 
     var path = $stateParams.path ? $stateParams.path : '';
 
@@ -15,7 +16,7 @@ function CategoryController($scope, $http, $stateParams) {
         $scope.directories = [];
         $scope.files = [];
 
-        $http.get('directory' + path).success(function(items) {
+        categoryService.getCategoryContent(path).success(function(items) {
             items.forEach(function(item) {
                 item.directory == true ? $scope.directories.push(item) : $scope.files.push(item);
             });
