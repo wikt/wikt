@@ -30,6 +30,14 @@ cd test
 git clone git://github.com/wikt/wiki-test.git
 ```
 
+## Run
+
+```bash
+node src/server.js
+```
+
+The server is now listening on 8080.
+
 ## JS Git libraries comparison
 
 Full JS implementations:

@@ -18,9 +18,14 @@ function DocumentController($scope, $stateParams, $http) {
 
     $scope.getMarkdown = function() {
         $http.get('file/' + encodeURIComponent(path)).success(function(markdown) {
-            $scope.markdown = markdown;
             var converter = new Showdown.converter();
-            $scope.html = converter.makeHtml(markdown);
+            var html = converter.makeHtml(markdown);
+
+            // Fix relative links for Angular -> prepend /#/
+            html = html.replace(/href="(((?!:\/\/)[^"])*)"/g, 'href="/#/$1"');
+
+            $scope.markdown = markdown;
+            $scope.html = html;
         });
     };
 
