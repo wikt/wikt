@@ -5,8 +5,15 @@
         <li class="active">{{ fileName }}</li>
     </ul>
 
+    <div class="btn-group pull-right">
+        <button class="edit-document btn">
+            <i class="icon-edit"></i>
+            Edit
+        </button>
+    </div>
+
     <div class="document" ng-bind-html-unsafe="html"></div>
 
-    <textarea class="documentSource input-block-level" rows="10" style="display: none">Source</textarea>
+    <textarea class="document-source input-block-level" rows="10" style="display: none">Source</textarea>
 
 </div>

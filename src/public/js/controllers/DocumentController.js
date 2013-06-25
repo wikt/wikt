@@ -3,7 +3,14 @@
 /* Document Controller */
 angular.module('wikt.controllers', []).controller('DocumentController', DocumentController);
 
-function DocumentController($scope, $stateParams, $http) {
+/**
+ * @param $scope
+ * @param $stateParams
+ * @param $http
+ * @param editorService {EditorService}
+ * @constructor
+ */
+function DocumentController($scope, $stateParams, $http, editorService) {
 
     var path = $stateParams.path ? $stateParams.path : '';
     var fileName;
@@ -32,5 +39,5 @@ function DocumentController($scope, $stateParams, $http) {
     $scope.getMarkdown();
 
     // Open Hallo editor
-    setUpHallo(jQuery);
+    editorService.startEditor();
 }
