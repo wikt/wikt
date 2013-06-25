@@ -22,7 +22,7 @@ function DocumentController($scope, $stateParams, $http) {
             var html = converter.makeHtml(markdown);
 
             // Fix relative links for Angular -> prepend /#/
-            html = html.replace(/href="(((?!:\/\/)[^"])*)"/g, 'href="/#/$1"');
+            html = html.replace(/href="(((?!:\/\/)[^"])*)"/g, 'href="#/$1"');
 
             $scope.markdown = markdown;
             $scope.html = html;
