@@ -5,6 +5,8 @@
         <li class="active">{{ fileName }}</li>
     </ul>
 
-    <div ng-bind-html-unsafe="html"></div>
+    <div class="document" ng-bind-html-unsafe="html"></div>
+
+    <textarea class="documentSource input-block-level" rows="10" style="display: none">Source</textarea>
 
 </div>
