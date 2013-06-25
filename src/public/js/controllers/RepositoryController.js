@@ -1,7 +1,6 @@
 'use strict';
 
 /* Repository Controller */
-angular.module('wikt.controllers', []).controller('RepositoryController', RepositoryController);
 
 function RepositoryController ($scope, $http, $stateParams, repositoryService) {
 
