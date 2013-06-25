@@ -27,7 +27,7 @@ module.exports = function(config) {
                 return;
             }
 
-            var result = {};
+            var result = [];
 
             // For each file
             for (var i = 0; i < files.length; i++) {
@@ -40,11 +40,12 @@ module.exports = function(config) {
 
                 // Check file type
                 var stat = fs.statSync(dirName + '/' + file);
-
-                result[file] = {
+                var object = {
                     name: file,
                     directory: stat.isDirectory()
                 };
+
+                result.push(object);
             }
 
             res.send(result);

@@ -3,21 +3,21 @@
         <li >
             <a href="#">
                 <i class="icon-chevron-up"></i>
-
             </a>
         </li>
-        <li ng-repeat='item in items' ng-class="{active: $index==}">
-            <a href="#/{{item.name}}">
-                {{item.name}}
-                <i class="icon-chevron-right pull-right"></i>
-            </a>
-        </li>
-        <li>
-            <a href="#">
+        <li ng-repeat='directory in directories'>
+            <a href="#/{{directory.name}}">
                 <i class="icon-folder-open"></i>
-                Other
+                {{directory.name}}
                 <i class="icon-chevron-right pull-right"></i>
             </a>
         </li>
+        <li ng-repeat='file in files'>
+            <a href="#/{{file.name}}">
+                {{file.name}}
+                <i class="icon-chevron-right pull-right"></i>
+            </a>
+        </li>
+
     </ul>
 </div>
