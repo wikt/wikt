@@ -1,6 +1,9 @@
-jQuery(document).ready(function() {
+var setUpHallo = function($) {
+    var divDocument = $('.document');
+    var divSource = $('.documentSource');
+
     // Enable Hallo editor
-    jQuery('.editable').hallo({
+    divDocument.hallo({
         plugins: {
             'halloformat': {},
             'halloheadings': {},
@@ -25,29 +28,37 @@ jQuery(document).ready(function() {
     // Method that converts the HTML contents to Markdown
     var showSource = function(content) {
         var markdown = markdownize(content);
-        if (jQuery('#source').get(0).value == markdown) {
+        if (divSource.get(0).value == markdown) {
             return;
         }
-        jQuery('#source').get(0).value = markdown;
+        divSource.get(0).value = markdown;
     };
 
 
     var updateHtml = function(content) {
-        if (markdownize(jQuery('.editable').html()) == content) {
+        if (markdownize(divDocument.html()) == content) {
             return;
         }
         var html = htmlize(content);
-        jQuery('.editable').html(html);
+        divDocument.html(html);
     };
 
     // Update Markdown every time content is modified
-    jQuery('.editable').bind('hallomodified', function(event, data) {
+    divDocument.bind('hallomodified', function(event, data) {
         showSource(data.content);
     });
-    jQuery('#source').on('keyup', function() {
-        console.log('test');
+
+    // Source edition
+    divSource.on('keyup', function() {
         updateHtml(this.value);
     });
 
-//    showSource(jQuery('.editable').html());
-});
+    divDocument.on('halloactivated', function() {
+        divSource.show(100);
+        showSource(divDocument.html());
+    });
+    divDocument.on('hallodeactivated', function() {
+        divSource.hide(100);
+        showSource(divDocument.html());
+    });
+};

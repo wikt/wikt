@@ -30,4 +30,7 @@ function DocumentController($scope, $stateParams, $http) {
     };
 
     $scope.getMarkdown();
+
+    // Open Hallo editor
+    setUpHallo(jQuery);
 }
