@@ -15,7 +15,7 @@ function DocumentController($scope, $stateParams, editorService, documentService
     var path = $stateParams.path ? $stateParams.path : '';
     $scope.fileName = repositoryService.getCurrentItemName(path);
 
-    $scope.getMarkdown = function() {
+    $scope.loadDocument = function() {
         documentService.getDocumentContent(path).success(function(markdown) {
             var converter = new Showdown.converter();
             var html = converter.makeHtml(markdown);
@@ -28,7 +28,7 @@ function DocumentController($scope, $stateParams, editorService, documentService
         });
     };
 
-    $scope.getMarkdown();
+    $scope.loadDocument();
 
     $scope.documentOpened = false;
 
@@ -36,6 +36,7 @@ function DocumentController($scope, $stateParams, editorService, documentService
         $scope.documentOpened = true;
         editorService.open();
     };
+
     $scope.saveDocument = function() {
         var markdown = editorService.getSource();
         documentService.setDocumentContent(path, markdown)
@@ -46,6 +47,7 @@ function DocumentController($scope, $stateParams, editorService, documentService
                 alert("Error while saving.");
             });
     };
+
     $scope.closeDocument = function() {
         $scope.documentOpened = false;
         editorService.close();
