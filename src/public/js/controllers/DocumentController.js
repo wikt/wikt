@@ -1,7 +1,6 @@
 'use strict';
 
 /* Document Controller */
-angular.module('wikt.controllers', []).controller('DocumentController', DocumentController);
 
 /**
  * @param $scope
