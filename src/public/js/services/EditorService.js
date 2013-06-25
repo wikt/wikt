@@ -1,5 +1,8 @@
 'use strict';
 
+/**
+ * WYSIWYG editor
+ */
 function EditorService() {
     var self = this;
 
