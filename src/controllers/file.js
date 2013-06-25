@@ -1,4 +1,5 @@
 var fs = require('fs');
+var git = require('gift');
 
 /**
  * File controller
@@ -44,15 +45,33 @@ module.exports = function(config) {
             fileName = 'README.md';
         }
 
+        var filePath = config.repositoryDirectory + '/' + fileName;
+
         console.log('Modifying file ' + fileName);
 
-        fs.writeFile(config.repositoryDirectory + '/' + fileName, req.body.content, function(err) {
+        fs.writeFile(filePath, req.body.content, function(err) {
             if (err) {
                 console.error(err);
                 return;
             }
 
-            res.send();
+            // Git commit
+            var repo = git(config.repositoryDirectory);
+            repo.add(filePath, function(err) {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+
+                repo.commit("Updated " + fileName, {}, function(err) {
+                    if (err) {
+                        console.error(err);
+                        return;
+                    }
+
+                    res.send();
+                });
+            });
         });
     };
 

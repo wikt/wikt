@@ -19,7 +19,7 @@ function CategoryController($scope, $http, $stateParams, categoryService) {
         $scope.parentDirectoryPath = categoryService.getParentDirectory(path);
         $scope.currentDirectoryPath = categoryService.getCurrentDirectory(path);
 
-        categoryService.getCategoryContent(path).success(function(items) {
+        categoryService.getCategoryContent($scope.currentDirectoryPath).success(function(items) {
             items.forEach(function(item) {
                 item.directory == true ? $scope.directories.push(item) : $scope.files.push(item);
             });
