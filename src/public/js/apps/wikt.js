@@ -7,17 +7,17 @@ angular
     .config(function ($stateProvider, $routeProvider, $urlRouterProvider) {
 
         $stateProvider.state('sample', {
-            url: '/:path',
-            views: {
-                "sample" : {
-                    templateUrl: 'views/article/view.html'
+            url:'/:path',
+            views:{
+                "sample":{
+                    templateUrl:'views/article/view.html'
                 },
-                "tree" : {
-                    templateUrl: 'views/category/tree.html'
+                "tree":{
+                    templateUrl:'views/category/tree.html'
                 }
             }
         });
 
         $urlRouterProvider.otherwise('/');
-        
+
     });

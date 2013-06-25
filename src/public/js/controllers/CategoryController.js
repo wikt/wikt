@@ -12,7 +12,7 @@ function CategoryController($scope, $http, $stateParams, categoryService) {
 
     var basePath = $stateParams.path ? $stateParams.path : '';
 
-    $scope.getPathContent = function(path) {
+    $scope.getPathContent = function (path) {
 
         $scope.directories = [];
         $scope.files = [];
@@ -20,8 +20,8 @@ function CategoryController($scope, $http, $stateParams, categoryService) {
         $scope.parentDirectoryPath = categoryService.getParentDirectory(path);
         $scope.currentDirectoryPath = categoryService.getCurrentDirectory(path);
 
-        categoryService.getCategoryContent($scope.currentDirectoryPath).success(function(items) {
-            items.forEach(function(item) {
+        categoryService.getCategoryContent($scope.currentDirectoryPath).success(function (items) {
+            items.forEach(function (item) {
                 item.directory == true ? $scope.directories.push(item) : $scope.files.push(item);
             });
         });

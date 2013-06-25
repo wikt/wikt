@@ -14,8 +14,8 @@ function ArticleController($scope, $stateParams, editorService, articleService, 
     var path = $stateParams.path ? $stateParams.path : '';
     $scope.fileName = categoryService.getCurrentItemName(path);
 
-    $scope.loadArticle = function() {
-        articleService.getArticleContent(path).success(function(markdown) {
+    $scope.loadArticle = function () {
+        articleService.getArticleContent(path).success(function (markdown) {
             var converter = new Showdown.converter();
             var html = converter.makeHtml(markdown);
 
@@ -31,23 +31,23 @@ function ArticleController($scope, $stateParams, editorService, articleService, 
 
     $scope.articleEdition = false;
 
-    $scope.editArticle = function() {
+    $scope.editArticle = function () {
         $scope.articleEdition = true;
         editorService.open();
     };
 
-    $scope.saveArticle = function() {
+    $scope.saveArticle = function () {
         var markdown = editorService.getSource();
         articleService.setArticleContent(path, markdown)
-            .success(function() {
+            .success(function () {
                 $scope.closeArticle();
             })
-            .error(function() {
+            .error(function () {
                 alert("Error while saving.");
             });
     };
 
-    $scope.closeArticle = function() {
+    $scope.closeArticle = function () {
         $scope.articleEdition = false;
         editorService.close();
     };

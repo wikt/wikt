@@ -10,31 +10,31 @@ function CategoryService($http) {
      * @param path {string} Category path
      * @returns promise function(items)
      */
-    this.getCategoryContent = function(path) {
+    this.getCategoryContent = function (path) {
         return $http.get('directory/' + encodeURIComponent(path));
     };
 
-    this.getCurrentItemName = function(path) {
+    this.getCurrentItemName = function (path) {
         return path.split('\\').pop();
     };
 
-    this.getCurrentDirectory = function(path) {
+    this.getCurrentDirectory = function (path) {
         if (path == '\\') {
             return path;
         } else {
             var slashIndex = path.lastIndexOf('\\');
-            return path.substring(0,slashIndex);
+            return path.substring(0, slashIndex);
         }
     };
 
-    this.getParentDirectory = function(path) {
+    this.getParentDirectory = function (path) {
         if (path == '\\') {
             return path;
         } else {
             var slashIndex = path.lastIndexOf('\\');
-            var tempPath = path.substring(0,slashIndex);
+            var tempPath = path.substring(0, slashIndex);
             slashIndex = tempPath.lastIndexOf('\\');
-            return tempPath.substring(0,slashIndex);
+            return tempPath.substring(0, slashIndex);
         }
     };
 

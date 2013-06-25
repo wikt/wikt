@@ -10,7 +10,7 @@ function ArticleService($http) {
      * @param path {string} Article path
      * @returns promise function(markdown)
      */
-    this.getArticleContent = function(path) {
+    this.getArticleContent = function (path) {
         return $http.get('file/' + encodeURIComponent(path));
     };
 
@@ -20,10 +20,10 @@ function ArticleService($http) {
      * @param content {string} Article markdown content
      * @returns promise
      */
-    this.setArticleContent = function(path, content) {
+    this.setArticleContent = function (path, content) {
         console.log('Setting article content for ' + path);
         console.log(content);
-        return $http.post('file/' + encodeURIComponent(path), {content: content});
+        return $http.post('file/' + encodeURIComponent(path), {content:content});
     };
 
 }

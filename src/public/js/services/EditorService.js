@@ -13,8 +13,8 @@ function EditorService() {
      * @param html {string}
      * @returns {string}
      */
-    this.markdownize = function(html) {
-        html = html.split("\n").map($.trim).filter(function(line) {
+    this.markdownize = function (html) {
+        html = html.split("\n").map($.trim).filter(function (line) {
             return line != "";
         }).join("\n");
         return toMarkdown(html);
@@ -25,11 +25,11 @@ function EditorService() {
      * @param markdown {string}
      * @returns {string}
      */
-    this.htmlize = function(markdown) {
+    this.htmlize = function (markdown) {
         return self.markdownConverter.makeHtml(markdown);
     };
 
-    this.showSource = function(content) {
+    this.showSource = function (content) {
         var markdown = self.markdownize(content);
         if (self.divArticleSource.get(0).value == markdown) {
             return;
@@ -38,7 +38,7 @@ function EditorService() {
     };
 
 
-    this.updateHtml = function(content) {
+    this.updateHtml = function (content) {
         if (self.markdownize(self.divArticle.html()) == content) {
             return;
         }
@@ -49,28 +49,28 @@ function EditorService() {
     /**
      * Start up the editor
      */
-    this.open = function() {
+    this.open = function () {
         self.divArticle = jQuery('.article');
         self.divArticleSource = jQuery('.article-source');
 
         self.divArticle.hallo({
-            plugins: {
-                'halloformat': {},
-                'halloheadings': {},
-                'hallolists': {},
-                'halloreundo': {}
+            plugins:{
+                'halloformat':{},
+                'halloheadings':{},
+                'hallolists':{},
+                'halloreundo':{}
             },
-            editable: true,
-            toolbar: 'halloToolbarFixed'
+            editable:true,
+            toolbar:'halloToolbarFixed'
         });
 
         // Update Markdown every time content is modified
-        self.divArticle.bind('hallomodified', function(event, data) {
+        self.divArticle.bind('hallomodified', function (event, data) {
             self.showSource(data.content);
         });
 
         // Source edition
-        self.divArticleSource.on('keyup', function() {
+        self.divArticleSource.on('keyup', function () {
             self.updateHtml(this.value);
         });
 
@@ -80,8 +80,8 @@ function EditorService() {
     /**
      * Close the editor (and discard modifications)
      */
-    this.close = function() {
-        self.divArticle.hallo({editable: false});
+    this.close = function () {
+        self.divArticle.hallo({editable:false});
         self.divArticle = null;
         self.divArticleSource = null;
     };
@@ -90,7 +90,7 @@ function EditorService() {
      * Returns the markdown source of the article
      * @returns {string}
      */
-    this.getSource = function() {
+    this.getSource = function () {
         return self.markdownize(self.divArticle.html());
     };
 }
