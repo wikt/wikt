@@ -15,14 +15,27 @@ function CategoryService($http) {
     };
 
     this.getCurrentItemName = function(path) {
-        var parts = path.split('\\');
-        if (parts.length > 0) {
-            return parts[parts.length - 1];
+        return path.split('\\').pop();
+    };
+
+    this.getCurrentDirectory = function(path) {
+        if (path == '\\') {
+            return path;
+        } else {
+            var slashIndex = path.lastIndexOf('\\');
+            return path.substring(0,slashIndex);
         }
     };
 
     this.getParentDirectory = function(path) {
-        return path.split('\\').pop().join('\\');
+        if (path == '\\') {
+            return path;
+        } else {
+            var slashIndex = path.lastIndexOf('\\');
+            var tempPath = path.substring(0,slashIndex);
+            slashIndex = tempPath.lastIndexOf('\\');
+            return tempPath.substring(0,slashIndex);
+        }
     };
 
 }

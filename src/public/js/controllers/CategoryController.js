@@ -10,11 +10,14 @@
  */
 function CategoryController($scope, $http, $stateParams, categoryService) {
 
-    var path = $stateParams.path ? $stateParams.path : '';
+    var basePath = $stateParams.path ? $stateParams.path : '';
 
     $scope.getPathContent = function(path) {
+
         $scope.directories = [];
         $scope.files = [];
+        $scope.parentDirectoryPath = categoryService.getParentDirectory(path);
+        $scope.currentDirectoryPath = categoryService.getCurrentDirectory(path);
 
         categoryService.getCategoryContent(path).success(function(items) {
             items.forEach(function(item) {
@@ -24,5 +27,5 @@ function CategoryController($scope, $http, $stateParams, categoryService) {
 
     };
 
-    $scope.getPathContent('/');
+    $scope.getPathContent(basePath);
 }
