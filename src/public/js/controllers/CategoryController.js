@@ -15,6 +15,7 @@ function CategoryController($scope, $http, $stateParams, categoryService) {
 
         $scope.directories = [];
         $scope.files = [];
+        $scope.currentItemName = categoryService.getCurrentItemName(path);
         $scope.parentDirectoryPath = categoryService.getParentDirectory(path);
         $scope.currentDirectoryPath = categoryService.getCurrentDirectory(path);
 
