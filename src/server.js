@@ -7,6 +7,7 @@ var repo = git(config.repositoryDirectory);
 // Server
 var express = require('express');
 var app = express();
+app.use(express.bodyParser());
 
 //app.use(express.logger());
 
