@@ -5,8 +5,13 @@ angular.module('wikt.controllers', []).controller('RepositoryController', Reposi
 
 function RepositoryController ($scope, $http) {
     $scope.getPathContent = function(path) {
-        $http.get('directory/' + path).success(function(data) {
-            $scope.items = data;
+        $scope.directories = [];
+        $scope.files = [];
+
+        $http.get('directory/' + path).success(function(items) {
+            items.forEach(function(item) {
+                item.directory == true ? $scope.directories.push(item) : $scope.files.push(item);
+            });
         });
     }
 

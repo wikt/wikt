@@ -6,16 +6,16 @@
 
             </a>
         </li>
-        <li ng-repeat='item in items' ng-class="{active: $index==1}">
-            <a href="#/{{item.name}}">
-                {{item.name}}
+        <li ng-repeat='directory in directories'>
+            <a href="#/{{directory.name}}">
+                <i class="icon-folder-open"></i>
+                {{directory.name}}
                 <i class="icon-chevron-right pull-right"></i>
             </a>
         </li>
-        <li>
-            <a href="#">
-                <i class="icon-folder-open"></i>
-                Other
+        <li ng-repeat='file in files'>
+            <a href="#/{{file.name}}">
+                {{file.name}}
                 <i class="icon-chevron-right pull-right"></i>
             </a>
         </li>
