@@ -1,13 +1,13 @@
 <div ng-controller='RepositoryController'>
     <ul class="nav nav-tabs nav-stacked">
         <li >
-            <a href="#">
+            <a href="">
                 <i class="icon-chevron-up"></i>
 
             </a>
         </li>
         <li ng-repeat='directory in directories'>
-            <a href="#/{{directory.name}}">
+            <a href ng-click="navigate(directory.name)">
                 <i class="icon-folder-open"></i>
                 {{directory.name}}
                 <i class="icon-chevron-right pull-right"></i>

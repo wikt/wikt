@@ -10,18 +10,10 @@ angular.module('wikt.controllers', []).controller('DocumentController', Document
  * @param editorService {EditorService}
  * @constructor
  */
-function DocumentController($scope, $stateParams, $http, editorService) {
+function DocumentController($scope, $stateParams, $http, editorService, repositoryService) {
 
     var path = $stateParams.path ? $stateParams.path : '';
-    var fileName;
-
-    var parts = path.split('\\');
-
-    if (parts.length > 0) {
-        fileName = parts[parts.length - 1];
-    }
-
-    $scope.fileName = fileName;
+    $scope.fileName = RepositoryService.getCurrentItemName(path);
 
     $scope.getMarkdown = function() {
         $http.get('file/' + encodeURIComponent(path)).success(function(markdown) {
