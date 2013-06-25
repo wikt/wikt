@@ -1,7 +1,6 @@
 'use strict';
 
 /* Repository Service */
-angular.module('wikt.services', []).service('RepositoryService', RepositoryService);
 
 function RepositoryService() {
 

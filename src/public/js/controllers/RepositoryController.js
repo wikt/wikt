@@ -3,7 +3,7 @@
 /* Repository Controller */
 angular.module('wikt.controllers', []).controller('RepositoryController', RepositoryController);
 
-function RepositoryController ($scope, $http, $stateParams, RepositoryService) {
+function RepositoryController ($scope, $http, $stateParams, repositoryService) {
 
     var path = $stateParams.path ? $stateParams.path : '';
 
@@ -17,7 +17,6 @@ function RepositoryController ($scope, $http, $stateParams, RepositoryService) {
             });
         });
 
-        //$scope.parentDirectoryPath = RepositoryService.getParentDirectory(path);
     }
 
     $scope.getPathContent('/');

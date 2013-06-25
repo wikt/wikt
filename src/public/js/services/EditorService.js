@@ -98,7 +98,3 @@ function EditorService() {
     };
 }
 
-var module = angular.module('wikt.services', []);
-module.factory('editorService', function () {
-    return new EditorService;
-});

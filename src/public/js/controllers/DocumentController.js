@@ -13,7 +13,7 @@ angular.module('wikt.controllers', []).controller('DocumentController', Document
 function DocumentController($scope, $stateParams, $http, editorService, repositoryService) {
 
     var path = $stateParams.path ? $stateParams.path : '';
-    $scope.fileName = RepositoryService.getCurrentItemName(path);
+    $scope.fileName = repositoryService.getCurrentItemName(path);
 
     $scope.getMarkdown = function() {
         $http.get('file/' + encodeURIComponent(path)).success(function(markdown) {
