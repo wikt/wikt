@@ -14,10 +14,17 @@ Requires:
 - cmake
 - Python
 
+Note: you can use Vagrant for a simple local setup! (no need to install Node or Python then)
+
+```bash
+vagrant up
+vagrant ssh
+cd /vagrant
+```
+
 Install Node libraries:
 
 ```bash
-cd src/
 npm install
 ```
 
@@ -33,7 +40,7 @@ git clone git://github.com/wikt/wiki-test.git
 ## Run
 
 ```bash
-node src/server.js
+node start.js
 ```
 
 The server is now listening on 8080.
