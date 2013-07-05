@@ -26,6 +26,8 @@ app.post('/file/:name?', fileController.post);
 // Serve static files of the JS app
 app.use('/', express.static(__dirname + '/src/public'));
 
-app.listen(80, function() {
-    console.log("Listening on port 80");
+var port = process.env.PORT || 8080;
+
+app.listen(port, function() {
+    console.log("Listening on port " + port);
 });

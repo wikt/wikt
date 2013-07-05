@@ -2,6 +2,7 @@
     "name": "wikt",
     "version": "0.1.0",
     "dependencies" : {
+        "node": "0.8.x",
         "gift"   : "*",
         "express": "3.x"
     }
